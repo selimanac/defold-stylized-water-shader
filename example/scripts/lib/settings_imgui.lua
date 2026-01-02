@@ -1,11 +1,11 @@
 local style       = require("example.scripts.lib.imgui_style")
 local data        = require("example.scripts.lib.data")
 local water       = require("water.water")
+
 -- =======================================
 -- MODULE
 -- =======================================
 local graph_imgui = {}
-
 
 -- =======================================
 -- Window Callback
@@ -440,13 +440,16 @@ local function settings_window()
 	imgui.begin_window("SETTINGS", nil)
 
 	imgui.begin_tab_bar("tabs")
+
 	colors_tab()
 	waves_tab()
 	foam_tab()
 	sparkle_tab()
 	refraction_reflection_tab()
 	others_tab()
+
 	imgui.end_tab_bar()
+
 	imgui.end_window()
 end
 
@@ -454,10 +457,7 @@ end
 -- Imgui Update
 -- =======================================
 function graph_imgui.update()
-	--	print("want_mouse_input", imgui.want_mouse_input())
 	data.want_mouse_input = imgui.want_mouse_input()
-
-
 	settings_window()
 end
 
