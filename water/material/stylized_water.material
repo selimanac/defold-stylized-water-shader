@@ -1,0 +1,253 @@
+name: "stylized_water"
+tags: "water"
+vertex_program: "/water/material/stylized_water.vp"
+fragment_program: "/water/material/stylized_water.fp"
+vertex_space: VERTEX_SPACE_LOCAL
+vertex_constants {
+  name: "view_proj"
+  type: CONSTANT_TYPE_VIEWPROJ
+}
+vertex_constants {
+  name: "world"
+  type: CONSTANT_TYPE_WORLD
+}
+vertex_constants {
+  name: "wave1"
+  type: CONSTANT_TYPE_USER
+  value {
+    y: 0.5
+    z: 15.0
+    w: 1.0
+  }
+}
+vertex_constants {
+  name: "wave2"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 0.5
+    y: 0.3
+    z: 20.0
+    w: 0.8
+  }
+}
+vertex_constants {
+  name: "time_v"
+  type: CONSTANT_TYPE_USER
+  value {
+  }
+}
+fragment_constants {
+  name: "camera_pos"
+  type: CONSTANT_TYPE_USER
+  value {
+  }
+}
+fragment_constants {
+  name: "time"
+  type: CONSTANT_TYPE_USER
+  value {
+  }
+}
+fragment_constants {
+  name: "wave_normal_params"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 10.0
+    y: 1.0
+  }
+}
+fragment_constants {
+  name: "shallow_color"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 0.44
+    y: 0.95
+    z: 0.36
+    w: 1.0
+  }
+}
+fragment_constants {
+  name: "deep_color"
+  type: CONSTANT_TYPE_USER
+  value {
+    y: 0.05
+    z: 0.19
+    w: 1.0
+  }
+}
+fragment_constants {
+  name: "far_color"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 0.04
+    y: 0.27
+    z: 0.75
+    w: 1.0
+  }
+}
+fragment_constants {
+  name: "foam_params"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 10.1
+    y: 1.0
+    z: 0.5
+    w: 1.0
+  }
+}
+fragment_constants {
+  name: "density_params"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 0.01
+    y: 0.3
+  }
+}
+fragment_constants {
+  name: "sun_params"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 50.0
+  }
+}
+fragment_constants {
+  name: "sun_color"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+}
+fragment_constants {
+  name: "sun_direction"
+  type: CONSTANT_TYPE_USER
+  value {
+    y: 0.5
+    z: 1.0
+  }
+}
+fragment_constants {
+  name: "sparkle_params"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 20.0
+    y: 0.75
+    z: 10000.0
+    w: 1.0
+  }
+}
+fragment_constants {
+  name: "sparkle_color"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+}
+fragment_constants {
+  name: "edge_foam_params"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 0.2
+  }
+}
+fragment_constants {
+  name: "edge_foam_color"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+}
+fragment_constants {
+  name: "projection_params"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 0.1
+    y: 1000.0
+  }
+}
+fragment_constants {
+  name: "refraction_params"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 0.1
+    y: 1.0
+  }
+}
+fragment_constants {
+  name: "reflection_params"
+  type: CONSTANT_TYPE_USER
+  value {
+    y: 3.0
+  }
+}
+fragment_constants {
+  name: "lod_params"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 100.0
+    y: 150.0
+  }
+}
+fragment_constants {
+  name: "edge_foam_type"
+  type: CONSTANT_TYPE_USER
+  value {
+  }
+}
+samplers {
+  name: "wave_normal_map"
+  wrap_u: WRAP_MODE_REPEAT
+  wrap_v: WRAP_MODE_REPEAT
+  filter_min: FILTER_MODE_MIN_LINEAR
+  filter_mag: FILTER_MODE_MAG_LINEAR
+}
+samplers {
+  name: "foam_texture"
+  wrap_u: WRAP_MODE_REPEAT
+  wrap_v: WRAP_MODE_REPEAT
+  filter_min: FILTER_MODE_MIN_LINEAR
+  filter_mag: FILTER_MODE_MAG_LINEAR
+}
+samplers {
+  name: "edge_foam_texture"
+  wrap_u: WRAP_MODE_REPEAT
+  wrap_v: WRAP_MODE_REPEAT
+  filter_min: FILTER_MODE_MIN_LINEAR
+  filter_mag: FILTER_MODE_MAG_LINEAR
+}
+samplers {
+  name: "sparkle_normal_map"
+  wrap_u: WRAP_MODE_REPEAT
+  wrap_v: WRAP_MODE_REPEAT
+  filter_min: FILTER_MODE_MIN_LINEAR
+  filter_mag: FILTER_MODE_MAG_LINEAR
+}
+samplers {
+  name: "depth_texture"
+  wrap_u: WRAP_MODE_CLAMP_TO_EDGE
+  wrap_v: WRAP_MODE_CLAMP_TO_EDGE
+  filter_min: FILTER_MODE_MIN_NEAREST
+  filter_mag: FILTER_MODE_MAG_NEAREST
+}
+samplers {
+  name: "refraction_texture"
+  wrap_u: WRAP_MODE_CLAMP_TO_EDGE
+  wrap_v: WRAP_MODE_CLAMP_TO_EDGE
+  filter_min: FILTER_MODE_MIN_LINEAR
+  filter_mag: FILTER_MODE_MAG_LINEAR
+}
+samplers {
+  name: "reflection_cubemap"
+  wrap_u: WRAP_MODE_CLAMP_TO_EDGE
+  wrap_v: WRAP_MODE_CLAMP_TO_EDGE
+  filter_min: FILTER_MODE_MIN_LINEAR
+  filter_mag: FILTER_MODE_MAG_LINEAR
+}

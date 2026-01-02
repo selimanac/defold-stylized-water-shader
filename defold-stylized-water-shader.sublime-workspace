@@ -1,0 +1,808 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"BLE",
+				"BLEND_FACTOR_ONE_MINUS_SRC_ALPHA"
+			],
+			[
+				"ve",
+				"vector4()"
+			],
+			[
+				"set",
+				"set_color(node, color)"
+			],
+			[
+				"C",
+				"PROP_COLOR"
+			],
+			[
+				"EASING_IN",
+				"EASING_INQUINT"
+			],
+			[
+				"for",
+				"for\tfor i=1,10"
+			],
+			[
+				"get",
+				"get_player_from_aabb_id(aabb_id)"
+			],
+			[
+				"EASING_",
+				"EASING_INEXPO"
+			],
+			[
+				"PL",
+				"PLAYBACK_ONCE_FORWARD"
+			],
+			[
+				"med",
+				"medkit_id"
+			],
+			[
+				"PLA",
+				"PLAYBACK_LOOP_FORWARD"
+			],
+			[
+				"get_me",
+				"get_medkit_count()"
+			],
+			[
+				"ge",
+				"get_medkits()"
+			],
+			[
+				"de",
+				"delete(id)"
+			],
+			[
+				"r",
+				"remove(list, pos)"
+			],
+			[
+				"i",
+				"insert_medkit(x, y)"
+			],
+			[
+				"PLAYBACK_LOO",
+				"PLAYBACK_LOOP_FORWARD"
+			],
+			[
+				"EA",
+				"EASING_LINEAR"
+			],
+			[
+				"EASING_OUT",
+				"EASING_OUTELASTIC"
+			],
+			[
+				"pla",
+				"PLAYBACK_LOOP_PINGPONG"
+			],
+			[
+				"EAS",
+				"EASING_INOUTEXPO"
+			],
+			[
+				"eas",
+				"EASING_OUTBOUNCE"
+			],
+			[
+				"sc",
+				"scripts.game.settings"
+			],
+			[
+				"st",
+				"start_node"
+			],
+			[
+				"total",
+				"total_killed_enemies"
+			],
+			[
+				"re",
+				"require(modname)"
+			],
+			[
+				"E",
+				"EASING_LINEAR"
+			],
+			[
+				"clone",
+				"clone_tree(node)"
+			],
+			[
+				"hero",
+				"hero_id"
+			],
+			[
+				"se",
+				"settings"
+			],
+			[
+				"ca",
+				"cancel_animation(node, property)"
+			],
+			[
+				"STA",
+				"STATUS"
+			],
+			[
+				"get_pla",
+				"get_player_health(player_id)"
+			],
+			[
+				"data",
+				"data_turrent_point"
+			],
+			[
+				"getr",
+				"get_player_turrent_container(player_id)"
+			],
+			[
+				"VE",
+				"VELOCITY"
+			],
+			[
+				"scr",
+				"scripts.game.data"
+			],
+			[
+				"script",
+				"scripts.game.utils"
+			],
+			[
+				"rota",
+				"rotate_speed"
+			],
+			[
+				"an",
+				"animate_target(models_container)"
+			],
+			[
+				"fo",
+				"fori\tfor i,v in ipairs()"
+			],
+			[
+				"un",
+				"unpack(list)"
+			],
+			[
+				"Get",
+				"GetHeroID"
+			],
+			[
+				"her",
+				"hero_aabb_id"
+			],
+			[
+				"player",
+				"player_id"
+			],
+			[
+				"enem",
+				"enemy_ids"
+			],
+			[
+				"scrip",
+				"scripts.game.collision"
+			],
+			[
+				"pl",
+				"players"
+			],
+			[
+				"mess",
+				"message_id"
+			],
+			[
+				"fun",
+				"function ()"
+			],
+			[
+				"vec",
+				"vector3()"
+			],
+			[
+				"PLa",
+				"PLAYBACK_ONCE_FORWARD"
+			],
+			[
+				"ac",
+				"action"
+			],
+			[
+				"BLEND",
+				"BLEND_FACTOR_ONE_MINUS_SRC_ALPHA"
+			],
+			[
+				"BLEN",
+				"BLEND_FACTOR_SRC_ALPHA"
+			],
+			[
+				"vector",
+				"vector3()"
+			],
+			[
+				"pr",
+				"print(...)"
+			],
+			[
+				"dmLo",
+				"dmLogInfo"
+			],
+			[
+				"coo",
+				"collision"
+			],
+			[
+				"coll",
+				"collision"
+			],
+			[
+				"FACE",
+				"FACE_TYPE_FRONT"
+			],
+			[
+				"KEY",
+				"KEY_DOWN"
+			],
+			[
+				"or",
+				"ortho_camera_id"
+			],
+			[
+				"pixe",
+				"pixel_camera"
+			],
+			[
+				"scripts",
+				"scripts.game.camera"
+			],
+			[
+				"d",
+				"display_height"
+			],
+			[
+				"dis",
+				"display_width"
+			],
+			[
+				"scri",
+				"scripts.game.hero"
+			],
+			[
+				"colle",
+				"collectionfactory"
+			],
+			[
+				"fac",
+				"factory"
+			],
+			[
+				"ga",
+				"scripts.game.manager"
+			],
+			[
+				"dra",
+				"draw_debug3d()"
+			],
+			[
+				"STENC",
+				"STATE_STENCIL_TEST"
+			],
+			[
+				"pixel",
+				"pixel_size"
+			],
+			[
+				"im",
+				"img-fluid"
+			],
+			[
+				"b",
+				"best"
+			],
+			[
+				"val",
+				"values"
+			],
+			[
+				"best",
+				"best"
+			],
+			[
+				"bes",
+				"bestDist"
+			],
+			[
+				"dist",
+				"distToClosestSqr"
+			],
+			[
+				"num",
+				"numValues"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Lua/Lua.sublime-build",
+					""
+				],
+				[
+					"Packages/Lua/Lua.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/User/C++ Build and Run.sublime-build",
+					""
+				],
+				[
+					"Packages/User/Defold-Build.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/User/C++ Build and Run.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Upp",
+				"Convert Case: Upper Case"
+			],
+			[
+				"upgrade",
+				"Package Control: Advanced Upgrade Packages"
+			],
+			[
+				"upda",
+				"Package Control: Upgrade All Packages"
+			],
+			[
+				"Upda",
+				"Help: Check for Updates"
+			],
+			[
+				"pac",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"packa di",
+				"Package Control: Disable Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: upd",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"tit",
+				"Convert Case: Title Case"
+			],
+			[
+				"lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"low",
+				"Convert Case: Lower Case"
+			],
+			[
+				"pa",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"lowe",
+				"Convert Case: Lower Case"
+			],
+			[
+				"ti",
+				"Convert Case: Title Case"
+			],
+			[
+				"title",
+				"Convert Case: Title Case"
+			],
+			[
+				"tr",
+				"Trim Trailing White Space"
+			],
+			[
+				"case",
+				"Convert Case: Title Case"
+			],
+			[
+				"tra",
+				"Trim Trailing White Space"
+			],
+			[
+				"up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"Tit",
+				"Convert Case: Title Case"
+			],
+			[
+				"upgra",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"upp",
+				"Convert Case: Upper Case"
+			],
+			[
+				"lo",
+				"Convert Case: Lower Case"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"t",
+				"Convert Case: Title Case"
+			],
+			[
+				"Title",
+				"Convert Case: Title Case"
+			],
+			[
+				"Title ",
+				"Convert Case: Title Case"
+			],
+			[
+				"",
+				"Bookmarks: Select Next"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Lorem ipsum"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 393.0,
+		"history":
+		[
+			"cd ..",
+			"ls"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-stylized-water-shader"
+	],
+	"file_history":
+	[
+		"/Users/selimanac/Development/defold/defold-extender/START-STOP-NEWVERSION.txt",
+		"/Users/selimanac/Documents/Tokyo-Fatura.txt",
+		"/Users/selimanac/Documents/connectvpn.vodafone.txt",
+		"/Users/selimanac/Documents/Finansbank.txt",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/example/wang.script",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/dof/materials/gaussian_blur/gaussian_blur_v.fp",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/dof/materials/render_target/render_target.fp",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/dof/materials/render_target/render_target.vp",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/dof/render/dof.render_script",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/dof/dof.lua",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/README.md",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/build.zsh",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/.gitignore",
+		"/Users/selimanac/Development/defold/GAMES/defold-tiny-city/tiny-city/release/build.zsh",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/example/main.script",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/dof/materials/dof.fp",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-astar/README.md",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-daabbcc/README.md",
+		"/var/folders/qr/lx1x7h85201_jnjx7335y9jh0000gn/T/extract-5499085280780595535/builtins/materials/skinning.glsl",
+		"/var/folders/qr/lx1x7h85201_jnjx7335y9jh0000gn/T/extract-5499085280780595535/builtins/materials/model_skinned_instanced.vp",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/dof/materials/gaussian_blur/gaussian_blur.glsl",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/dof/materials/gaussian_blur/gaussian_blur_h.fp",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/dof/materials/box_blur/box_blur.fp",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/dof/materials/dof.vp",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/game.project",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/example/orbit.script",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-graph-pathfinder/README.md",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-depth-of-field/dof/render_target.go",
+		"/Users/selimanac/Documents/HEMEN AL.txt",
+		"/Users/selimanac/Documents/BodrumEvTTNET.txt",
+		"/Users/selimanac/Documents/ixir-host/tokyo-ixir-host.txt",
+		"/Users/selimanac/Documents/edevlet.txt",
+		"/Users/selimanac/Development/defold/tests/dof/render/default.render_script",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-graph-pathfinder-exampes/examples/keys/debug.keystore.pass.txt",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-graph-pathfinder-exampes/editor/main/mail.script",
+		"/Volumes/Work/Downloads/defold-pbr-master/defold-pbr/assets/brdf_lut.buffer",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-daabbcc/.internal/editor.port",
+		"/Users/selimanac/Development/defold/bsp/dungeon-room/dungeon.lua",
+		"/Users/selimanac/Development/defold/bsp/dungeon-gen-master/main.lua",
+		"/Users/selimanac/Development/defold/bsp/Lua-Dungeon-Generator-master/ExampleMain.lua",
+		"/Volumes/Work/Downloads/game.projectc",
+		"/Volumes/Work/Downloads/game.dmanifest",
+		"/Users/selimanac/Documents/affinity.txt",
+		"/Users/selimanac/Development/www/colorsalone.com/backup/wait_and_redirect.php",
+		"/Users/selimanac/Development/defold/tests/empty-delete/main/test.script",
+		"/Users/selimanac/Development/c-addons/defoldsdk/sdk/include/dmsdk/dlib/hashtable.h",
+		"/Volumes/Work/Downloads/defoldsdk 4/sdk/include/dmsdk/dlib/hashtable.h",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-astar/astar/src/astar.cpp",
+		"/Volumes/Work/Downloads/defold-daabbcc-example-platformer-main 2/scripts/lib/game_camera.lua",
+		"/Users/selimanac/Documents/STEAM-Recovery.txt",
+		"/Users/selimanac/Development/defold/defold-extender/START-STOP-README.txt",
+		"/Users/selimanac/Development/defold/tests/gun/main/main.script",
+		"/Volumes/Work/Downloads/Bones/main/main.script",
+		"/Volumes/Work/Downloads/Bones/render/default.render_script",
+		"/Users/selimanac/Development/defold/Basic 3D project/render/default.render_script",
+		"/Volumes/Work/Downloads/defold-input-master/examples/onscreen_gui/controls.gui_script",
+		"/Users/selimanac/Development/defold/Basic 3D project/main/main.script",
+		"/var/folders/qr/lx1x7h85201_jnjx7335y9jh0000gn/T/extract-6125021416531083011/defos/ext.manifest",
+		"/var/folders/qr/lx1x7h85201_jnjx7335y9jh0000gn/T/extract-6125021416531083011/daabbcc/ext.manifest",
+		"/var/folders/qr/lx1x7h85201_jnjx7335y9jh0000gn/T/extract-2978835128407253467/imgui/ext.manifest",
+		"/Volumes/Work/Downloads/defold-pbr-master/defold-pbr/core.script",
+		"/Volumes/Work/Downloads/defold-pbr-master/defold-pbr/core.lua",
+		"/Users/selimanac/Development/defold/GAMES/MadBoys/dev/scripts/game/player.script",
+		"/Volumes/Work/Downloads/Bekleyen-bultenler/1/Vodafone Flex.txt",
+		"/var/folders/qr/lx1x7h85201_jnjx7335y9jh0000gn/T/extract-14478379611221389058/builtins/manifests/web/light_theme.css",
+		"/Users/selimanac/Library/Application Support/Sublime Text/Packages/User/Defold-Build.sublime-build",
+		"/Users/selimanac/Library/Application Support/Sublime Text/Packages/Defold-Build/defold_build.py",
+		"/Users/selimanac/Library/Application Support/Sublime Text/Packages/Defold-Build/Default.sublime-commands",
+		"/Users/selimanac/Library/Application Support/Sublime Text/Packages/User/Defold-Build/Default.sublime-commands",
+		"/Users/selimanac/Library/Application Support/Sublime Text/Packages/User/Defold-Build/defold_build.py",
+		"/Users/selimanac/Library/Application Support/Sublime Text/Packages/User/defold_build.py",
+		"/var/folders/qr/lx1x7h85201_jnjx7335y9jh0000gn/T/extract-9177089856470329588/builtins/materials/tile_map.vp",
+		"/Users/selimanac/Development/defold/Jhonnyg-my-public-defold-examples/render-target-resource/main/minimap.fp",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-pixelart-shadows/scripts/camera/orbit_camera.script",
+		"/Users/selimanac/Development/defold/tests/gamepad/main/main.script",
+		"/Users/selimanac/Development/defold/tests/gamepad/main/gamepad.gui_script",
+		"/Users/selimanac/Development/defold/pixelart-shader-tests/defold-pixelart-shadow-test/scripts/editor.script",
+		"/Users/selimanac/Documents/2fa_recovery.txt",
+		"/Users/selimanac/Development/defold/EXTENSIONS/defold-outline-shader/dev/defold-toon-shader/toon_shader/render/default.render_script",
+		"/Users/selimanac/Documents/tarif.txt",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/data.lua",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/gui/main.gui_script",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/game.project",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/.gitignore",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/pixelart/materials/shadow/shadow_render.vp",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/pixelart/materials/shadow/shadow_pass.fp",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/pixelart/materials/shadow/shadow_pass.vp",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/loading.script",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/camera.lua",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/game_orbit_camera.script",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/components/models/ground.model",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/components/collections/arena.collection",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/pixelart/materials/shadow/shadow_smooth_render.material",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/pixelart/game_pixelart_render.lua",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/pixelart/materials/shadow/shadow_smooth_render.fp",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/manifest.private.der",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/manifest.public.der",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/enemy.lua",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/collision.lua",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/bullets.lua",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/pixelart/materials/sprite.material",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/pixelart/materials/sky.fp",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/pixelart/materials/sprite.vp",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/pixelart/materials/sprite.fp",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/README.md",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/game.script",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/settings.lua",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/player.lua",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/hero.lua",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/manager.lua",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/orthographic/render/game.render_script",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/enemy.script",
+		"/Users/selimanac/Development/defold/GAMES/defold-astar-prototype/scripts/gui/main.gui_script",
+		"/Users/selimanac/Development/defold/GAMES/defold-astar-prototype/scripts/gui/gui_manager.lua",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/bump-3dpd.lua",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/components/gui/main.gui_script",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/statemachine.lua",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/scripts/game/utils.lua",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/metrics/fps.script",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/metrics/fps.lua",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/input/game.input_binding",
+		"/Volumes/Work/Downloads/__TT/render/custom.render_script",
+		"/Volumes/Work/Downloads/__TT/sources/empty_style.lua",
+		"/Volumes/Work/Downloads/__TT/sources/common.lua",
+		"/Volumes/Work/Downloads/__TT/sources/base.lua",
+		"/Volumes/Work/Downloads/__TT/assets/materials/landscape/landscape.vp",
+		"/Volumes/Work/Downloads/__TT/assets/materials/landscape/landscape.fp",
+		"/Users/selimanac/Development/defold/GAMES/mwdj2024/daabbcc/src/daabbcc.cpp"
+	],
+	"find":
+	{
+		"height": 32.0
+	},
+	"find_in_files":
+	{
+		"height": 154.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 54.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.LSP Log Panel":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.diagnostics":
+	{
+		"height": 314.0,
+		"history":
+		[
+		]
+	},
+	"output.exec":
+	{
+		"height": 41.0,
+		"history":
+		[
+		]
+	},
+	"output.find_results":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.references":
+	{
+		"height": 162.0
+	},
+	"pinned_build_system": "Packages/User/Defold-Build.sublime-build",
+	"project": "defold-stylized-water-shader.sublime-project",
+	"replace":
+	{
+		"height": 60.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 501.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"lsp_show_inlay_hints": true
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 361.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

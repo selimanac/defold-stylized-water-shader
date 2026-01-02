@@ -1,0 +1,113 @@
+platforms:
+  armv7-ios:
+    context:
+      excludeLibs: [physics, LinearMath, BulletDynamics, BulletCollision, box2d_defold, script_box2d_defold, record, vpx, liveupdate]
+      excludeSymbols: [ScriptBox2DExt, ScriptTypesExt]
+      symbols: []
+      libs: [physics_null, record_null, liveupdate_null]
+      frameworks: []
+      linkFlags: []
+  arm64-ios:
+    context:
+      excludeLibs: [graphics, physics, LinearMath, BulletDynamics, BulletCollision, box2d_defold, script_box2d_defold, record, vpx, liveupdate]
+      excludeSymbols: [GraphicsAdapterOpenGL, ScriptBox2DExt, ScriptTypesExt]
+      symbols: [GraphicsAdapterVulkan]
+      libs: [graphics_vulkan, MoltenVK, physics_null, record_null, liveupdate_null]
+      frameworks: [Metal, IOSurface, QuartzCore]
+      linkFlags: []
+  x86_64-ios:
+    context:
+      excludeLibs: [physics, LinearMath, BulletDynamics, BulletCollision, box2d_defold, script_box2d_defold, record, vpx, liveupdate]
+      excludeSymbols: [ScriptBox2DExt, ScriptTypesExt]
+      symbols: []
+      libs: [physics_null, record_null, liveupdate_null]
+      frameworks: []
+      linkFlags: []
+  armv7-android:
+    context:
+      excludeLibs: [graphics, physics, LinearMath, BulletDynamics, BulletCollision, box2d_defold, script_box2d_defold, record, vpx, liveupdate]
+      excludeJars: []
+      excludeSymbols: [GraphicsAdapterOpenGL, ScriptBox2DExt, ScriptTypesExt]
+      symbols: [GraphicsAdapterVulkan]
+      libs: [graphics_vulkan, physics_null, record_null, liveupdate_null]
+      linkFlags: []
+      jetifier: true
+  arm64-android:
+    context:
+      excludeLibs: [graphics, physics, LinearMath, BulletDynamics, BulletCollision, box2d_defold, script_box2d_defold, record, vpx, liveupdate]
+      excludeJars: []
+      excludeSymbols: [GraphicsAdapterOpenGL, ScriptBox2DExt, ScriptTypesExt]
+      symbols: [GraphicsAdapterVulkan]
+      libs: [graphics_vulkan, physics_null, record_null, liveupdate_null]
+      linkFlags: []
+      jetifier: true
+  arm64-osx:
+    context:
+      excludeLibs: [graphics_vulkan, platform_vulkan, MoltenVK, physics, LinearMath, BulletDynamics, BulletCollision, box2d_defold, script_box2d_defold, record, vpx, liveupdate]
+      excludeSymbols: [GraphicsAdapterVulkan, ScriptBox2DExt, ScriptTypesExt]
+      symbols: [GraphicsAdapterOpenGL]
+      libs: [graphics, platform, physics_null, record_null, liveupdate_null]
+      frameworks: [OpenGL]
+      linkFlags: []
+  x86_64-osx:
+    context:
+      excludeLibs: [graphics_vulkan, platform_vulkan, MoltenVK, physics, LinearMath, BulletDynamics, BulletCollision, box2d_defold, script_box2d_defold, record, vpx, liveupdate]
+      excludeSymbols: [GraphicsAdapterVulkan, ScriptBox2DExt, ScriptTypesExt]
+      symbols: [GraphicsAdapterOpenGL]
+      libs: [graphics, platform, physics_null, record_null, liveupdate_null]
+      frameworks: [OpenGL]
+      linkFlags: []
+  x86_64-linux:
+    context:
+      excludeLibs: [graphics, physics, LinearMath, BulletDynamics, BulletCollision, box2d_defold, script_box2d_defold, record, vpx, liveupdate]
+      excludeSymbols: [GraphicsAdapterOpenGL, ScriptBox2DExt, ScriptTypesExt]
+      symbols: [GraphicsAdapterVulkan]
+      libs: [platform_vulkan, graphics_vulkan, X11-xcb, physics_null, record_null, liveupdate_null]
+      dynamicLibs: [vulkan]
+      linkFlags: []
+  arm64-linux:
+    context:
+      excludeLibs: [graphics, physics, LinearMath, BulletDynamics, BulletCollision, box2d_defold, script_box2d_defold, record, vpx, liveupdate]
+      excludeSymbols: [GraphicsAdapterOpenGLES, ScriptBox2DExt, ScriptTypesExt]
+      symbols: [GraphicsAdapterVulkan]
+      libs: [platform_vulkan, graphics_vulkan, X11-xcb, physics_null, record_null, liveupdate_null]
+      dynamicLibs: [vulkan]
+      linkFlags: []
+  x86-win32:
+    context:
+      excludeLibs: [platform, libgraphics, libphysics, libLinearMath, libBulletDynamics, libBulletCollision, libbox2d_defold, libscript_box2d_defold, librecord, vpx, libliveupdate]
+      excludeSymbols: [GraphicsAdapterOpenGL, ScriptBox2DExt, ScriptTypesExt]
+      symbols: [GraphicsAdapterVulkan]
+      libs: [platform_vulkan.lib, libgraphics_vulkan.lib, vulkan-1.lib, libphysics_null.lib, librecord_null.lib, libliveupdate_null.lib]
+      linkFlags: []
+  x86_64-win32:
+    context:
+      excludeLibs: [platform, libgraphics, libphysics, libLinearMath, libBulletDynamics, libBulletCollision, libbox2d_defold, libscript_box2d_defold, librecord, vpx, libliveupdate]
+      excludeSymbols: [GraphicsAdapterOpenGL, ScriptBox2DExt, ScriptTypesExt]
+      symbols: [GraphicsAdapterVulkan]
+      libs: [platform_vulkan.lib, libgraphics_vulkan.lib, vulkan-1.lib, libphysics_null.lib, librecord_null.lib, libliveupdate_null.lib]
+      linkFlags: []
+  js-web:
+    context:
+      excludeLibs: [physics, LinearMath, BulletDynamics, BulletCollision, box2d_defold, script_box2d_defold, record, vpx, liveupdate]
+      excludeJsLibs: []
+      excludeSymbols: [ScriptBox2DExt, ScriptTypesExt]
+      symbols: []
+      libs: [physics_null, record_null, liveupdate_null]
+      linkFlags: []
+  wasm-web:
+    context:
+      excludeLibs: [physics, LinearMath, BulletDynamics, BulletCollision, box2d_defold, script_box2d_defold, record, vpx, liveupdate]
+      excludeJsLibs: []
+      excludeSymbols: [ScriptBox2DExt, ScriptTypesExt]
+      symbols: []
+      libs: [physics_null, record_null, liveupdate_null]
+      linkFlags: []
+  wasm_pthread-web:
+    context:
+      excludeLibs: [physics, LinearMath, BulletDynamics, BulletCollision, box2d_defold, script_box2d_defold, record, vpx, liveupdate]
+      excludeJsLibs: []
+      excludeSymbols: [ScriptBox2DExt, ScriptTypesExt]
+      symbols: []
+      libs: [physics_null, record_null, liveupdate_null]
+      linkFlags: []

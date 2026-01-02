@@ -1,0 +1,6 @@
+right: "/example/assets/skybox/cubemap_5/px.png"
+left: "/example/assets/skybox/cubemap_5/nx.png"
+top: "/example/assets/skybox/cubemap_5/py.png"
+bottom: "/example/assets/skybox/cubemap_5/ny.png"
+front: "/example/assets/skybox/cubemap_5/pz.png"
+back: "/example/assets/skybox/cubemap_5/nz.png"

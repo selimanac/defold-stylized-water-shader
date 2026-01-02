@@ -1,0 +1,93 @@
+#version 140
+
+in highp vec4   position;
+in mediump vec2 texcoord0;
+in mediump mat4 mtx_world;
+in mediump mat4 mtx_normal;
+
+uniform vp_uniforms
+{
+    mediump mat4 view_proj;
+    mediump mat4 world;
+    mediump vec4 wave1;
+    mediump vec4 wave2;
+    mediump vec4 time_v;
+};
+
+out mediump vec2 var_texcoord0;
+out highp vec3   var_world_position;
+out mediump vec3 var_world_normal;
+out highp vec4   var_clip_position;
+
+#define PI 3.1415926536
+
+// Simple wave function
+float simple_wave(vec2 pos, vec2 direction, float wavelength, float amplitude, float speed)
+{
+    float x = PI * dot(pos, direction) / wavelength;
+    float phase = speed * time_v.x;
+    return amplitude * sin(x + phase);
+}
+
+// Analytical wave gradient calculation
+vec2 wave_gradient(vec2 pos, vec2 direction, float wavelength, float amplitude, float speed)
+{
+    float x = PI * dot(pos, direction) / wavelength;
+    float phase = speed * time_v.x;
+    float k = PI / wavelength; // Wave number
+    float dfdx = amplitude * cos(x + phase) * k * direction.x;
+    float dfdz = amplitude * cos(x + phase) * k * direction.y;
+    return vec2(dfdx, dfdz);
+}
+
+// Get total wave height at position
+float get_wave_height(vec2 world_pos)
+{
+    vec2  dir1 = vec2(cos(PI * wave1.x), sin(PI * wave1.x));
+    vec2  dir2 = vec2(cos(PI * wave2.x), sin(PI * wave2.x));
+
+    float w1 = simple_wave(world_pos, dir1, wave1.z, wave1.y, wave1.w);
+    float w2 = simple_wave(world_pos, dir2, wave2.z, wave2.y, wave2.w);
+
+    return w1 + w2;
+}
+
+// Calculate wave normal using analytical derivatives
+vec3 get_wave_normal(vec2 world_pos)
+{
+    vec2 dir1 = vec2(cos(PI * wave1.x), sin(PI * wave1.x));
+    vec2 dir2 = vec2(cos(PI * wave2.x), sin(PI * wave2.x));
+
+    // Get analytical gradients for both waves
+    vec2 grad1 = wave_gradient(world_pos, dir1, wave1.z, wave1.y, wave1.w);
+    vec2 grad2 = wave_gradient(world_pos, dir2, wave2.z, wave2.y, wave2.w);
+
+    // Sum the gradients
+    vec2 total_grad = grad1 + grad2;
+
+    vec3 normal = normalize(vec3(-total_grad.x, 1.0, -total_grad.y));
+
+    return normal;
+}
+
+void main()
+{
+    // Transform to world space
+    vec4 world_pos = world * position;
+
+    // Apply wave displacement
+    float wave_height = get_wave_height(world_pos.xz);
+    world_pos.y += wave_height;
+
+    // Calculate wave normal using analytical derivatives
+    vec3 wave_normal = get_wave_normal(world_pos.xz);
+
+    // Transform to clip space
+    gl_Position = view_proj * world_pos;
+
+    // Pass to fragment shader
+    var_texcoord0 = texcoord0;
+    var_world_position = world_pos.xyz;
+    var_world_normal = wave_normal;
+    var_clip_position = gl_Position;
+}
