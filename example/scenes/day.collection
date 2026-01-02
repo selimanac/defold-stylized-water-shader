@@ -1,0 +1,148 @@
+name: "main"
+instances {
+  id: "water_surface"
+  prototype: "/water/water_surface.go"
+  position {
+    z: -10.234999
+  }
+  scale3 {
+    x: 40.0
+    z: 20.0
+  }
+}
+scale_along_z: 0
+embedded_instances {
+  id: "camera"
+  data: "components {\n"
+  "  id: \"orbit_camera\"\n"
+  "  component: \"/example/scripts/orbit_camera.script\"\n"
+  "  properties {\n"
+  "    id: \"zoom\"\n"
+  "    value: \"1.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"offset\"\n"
+  "    value: \"0.0, 15.0, 0.0\"\n"
+  "    type: PROPERTY_TYPE_VECTOR3\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"camera\"\n"
+  "  type: \"camera\"\n"
+  "  data: \"aspect_ratio: 1.777778\\n"
+  "fov: 1.2\\n"
+  "near_z: 0.1\\n"
+  "far_z: 1000.0\\n"
+  "auto_aspect_ratio: 1\\n"
+  "\"\n"
+  "}\n"
+  ""
+  rotation {
+    x: 0.043619387
+    w: 0.99904823
+  }
+}
+embedded_instances {
+  id: "sun"
+  data: ""
+  position {
+    x: 4.640538
+    y: 80.02782
+    z: 17.282509
+  }
+}
+embedded_instances {
+  id: "terrain"
+  data: "embedded_components {\n"
+  "  id: \"model\"\n"
+  "  type: \"model\"\n"
+  "  data: \"mesh: \\\"/example/assets/models/island.glb\\\"\\n"
+  "name: \\\"{{NAME}}\\\"\\n"
+  "materials {\\n"
+  "  name: \\\"island4\\\"\\n"
+  "  material: \\\"/example/components/materials/repeat.material\\\"\\n"
+  "  textures {\\n"
+  "    sampler: \\\"tex0\\\"\\n"
+  "    texture: \\\"/example/assets/textures/sand_texture.jpg\\\"\\n"
+  "  }\\n"
+  "}\\n"
+  "create_go_bones: false\\n"
+  "\"\n"
+  "}\n"
+  ""
+  position {
+    x: -13.142607
+    y: -1.019505
+    z: -66.2424
+  }
+}
+embedded_instances {
+  id: "lighthouse"
+  data: "embedded_components {\n"
+  "  id: \"model\"\n"
+  "  type: \"model\"\n"
+  "  data: \"mesh: \\\"/example/assets/models/lighthouse.glb\\\"\\n"
+  "name: \\\"{{NAME}}\\\"\\n"
+  "materials {\\n"
+  "  name: \\\"lambert2SG\\\"\\n"
+  "  material: \\\"/example/components/materials/model_instanced.material\\\"\\n"
+  "  textures {\\n"
+  "    sampler: \\\"tex0\\\"\\n"
+  "    texture: \\\"/example/assets/textures/lighthouse.png\\\"\\n"
+  "  }\\n"
+  "}\\n"
+  "\"\n"
+  "}\n"
+  ""
+  position {
+    x: -8.052503
+    y: 21.611216
+    z: -67.49762
+  }
+  rotation {
+    y: 0.8794932
+    w: 0.4759115
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+embedded_instances {
+  id: "skybox"
+  data: "embedded_components {\n"
+  "  id: \"model\"\n"
+  "  type: \"model\"\n"
+  "  data: \"mesh: \\\"/builtins/assets/meshes/sphere.dae\\\"\\n"
+  "name: \\\"{{NAME}}\\\"\\n"
+  "materials {\\n"
+  "  name: \\\"default\\\"\\n"
+  "  material: \\\"/example/components/materials/skybox/skybox.material\\\"\\n"
+  "  textures {\\n"
+  "    sampler: \\\"cubemap\\\"\\n"
+  "    texture: \\\"/example/components/day_skybox.cubemap\\\"\\n"
+  "  }\\n"
+  "}\\n"
+  "\"\n"
+  "}\n"
+  ""
+  scale3 {
+    x: 300.0
+    y: 300.0
+    z: 300.0
+  }
+}
+embedded_instances {
+  id: "script"
+  data: "components {\n"
+  "  id: \"main\"\n"
+  "  component: \"/example/scripts/main.script\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"imgui\"\n"
+  "  component: \"/imgui/imgui.script\"\n"
+  "}\n"
+  ""
+}

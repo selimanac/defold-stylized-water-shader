@@ -9,6 +9,8 @@ go.property("zoom_speed", 0.1)
 go.property("rotation_speed", 0.5)
 -- The offset of the camera from the origin
 go.property("offset", vmath.vector3(0, 0, 0))
+go.property("zoom_offset", 100)
+
 
 function init(self)
 	-- Acquire input focus to receive input events
@@ -17,10 +19,12 @@ function init(self)
 	-- Initialize start values
 	self.yaw = go.get(".", "euler.y")
 	self.pitch = go.get(".", "euler.x")
-	self.zoom_offset = 0
+	self.zoom_offset = 100
 	self.current_yaw = self.yaw
 	self.current_pitch = self.pitch
 	self.current_zoom = self.zoom_offset
+
+	go.animate("/camera#orbit_camera", "zoom_offset", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_OUTQUAD, 10)
 end
 
 function update(self, dt)

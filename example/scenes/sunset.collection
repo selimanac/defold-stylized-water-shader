@@ -1,16 +1,4 @@
 name: "main"
-instances {
-  id: "water_surface"
-  prototype: "/water/water_surface.go"
-  position {
-    x: 6.417183
-    z: -38.118946
-  }
-  scale3 {
-    x: 30.0
-    z: 20.0
-  }
-}
 scale_along_z: 0
 embedded_instances {
   id: "camera"
@@ -19,19 +7,24 @@ embedded_instances {
   "  component: \"/example/scripts/orbit_camera.script\"\n"
   "  properties {\n"
   "    id: \"zoom\"\n"
-  "    value: \"20.0\"\n"
+  "    value: \"1.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"zoom_speed\"\n"
+  "    value: \"1.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "  properties {\n"
   "    id: \"offset\"\n"
-  "    value: \"20.0, 15.0, 0.0\"\n"
+  "    value: \"0.0, 5.0, 0.0\"\n"
   "    type: PROPERTY_TYPE_VECTOR3\n"
   "  }\n"
   "}\n"
   "embedded_components {\n"
   "  id: \"camera\"\n"
   "  type: \"camera\"\n"
-  "  data: \"aspect_ratio: 1.0\\n"
+  "  data: \"aspect_ratio: 1.777778\\n"
   "fov: 1.2\\n"
   "near_z: 0.1\\n"
   "far_z: 1000.0\\n"
@@ -39,18 +32,14 @@ embedded_instances {
   "\"\n"
   "}\n"
   ""
-  rotation {
-    x: -0.026176948
-    w: 0.99965733
-  }
 }
 embedded_instances {
   id: "sun"
   data: ""
   position {
-    x: 24.342358
-    y: 89.19894
-    z: -43.5361
+    x: -27.84367
+    y: 20.893885
+    z: -137.3754
   }
 }
 embedded_instances {
@@ -62,10 +51,10 @@ embedded_instances {
   "name: \\\"{{NAME}}\\\"\\n"
   "materials {\\n"
   "  name: \\\"island4\\\"\\n"
-  "  material: \\\"/example/components/materials/model_instanced.material\\\"\\n"
+  "  material: \\\"/example/components/materials/repeat.material\\\"\\n"
   "  textures {\\n"
   "    sampler: \\\"tex0\\\"\\n"
-  "    texture: \\\"/example/assets/textures/island.png\\\"\\n"
+  "    texture: \\\"/example/assets/textures/sand_texture.jpg\\\"\\n"
   "  }\\n"
   "}\\n"
   "create_go_bones: false\\n"
@@ -73,14 +62,9 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 19.747108
-    y: -0.836442
-    z: -64.85567
-  }
-  scale3 {
-    x: 10.0
-    y: 10.0
-    z: 10.0
+    x: -52.77691
+    y: -1.019505
+    z: -66.2424
   }
 }
 embedded_instances {
@@ -102,13 +86,18 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: -24.062634
-    y: 1.728383
-    z: -58.851994
+    x: -47.495308
+    y: 21.443186
+    z: -66.37689
   }
   rotation {
-    y: -0.14599976
-    w: 0.98928463
+    y: 0.8827645
+    w: 0.46981567
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
   }
 }
 embedded_instances {
@@ -123,16 +112,16 @@ embedded_instances {
   "  material: \\\"/example/components/materials/skybox/skybox.material\\\"\\n"
   "  textures {\\n"
   "    sampler: \\\"cubemap\\\"\\n"
-  "    texture: \\\"/example/components/skybox.cubemap\\\"\\n"
+  "    texture: \\\"/example/components/sunset_skybox.cubemap\\\"\\n"
   "  }\\n"
   "}\\n"
   "\"\n"
   "}\n"
   ""
   scale3 {
-    x: 300.0
-    y: 300.0
-    z: 300.0
+    x: 200.0
+    y: 200.0
+    z: 200.0
   }
 }
 embedded_instances {
@@ -140,10 +129,27 @@ embedded_instances {
   data: "components {\n"
   "  id: \"main\"\n"
   "  component: \"/example/scripts/main.script\"\n"
+  "  properties {\n"
+  "    id: \"is_day\"\n"
+  "    value: \"false\"\n"
+  "    type: PROPERTY_TYPE_BOOLEAN\n"
+  "  }\n"
   "}\n"
   "components {\n"
   "  id: \"imgui\"\n"
   "  component: \"/imgui/imgui.script\"\n"
   "}\n"
   ""
+}
+embedded_instances {
+  id: "water_surface"
+  data: "components {\n"
+  "  id: \"water\"\n"
+  "  component: \"/water/water.model\"\n"
+  "}\n"
+  ""
+  scale3 {
+    x: 40.0
+    z: 40.0
+  }
 }

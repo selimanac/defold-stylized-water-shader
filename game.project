@@ -1,5 +1,5 @@
 [bootstrap]
-main_collection = /example/scenes/example.collectionc
+main_collection = /example/scenes/day.collectionc
 render = /water/render/water.renderc
 
 [script]
@@ -9,9 +9,11 @@ shared_state = 1
 width = 1920
 height = 1080
 high_dpi = 1
+samples = 2
 
 [android]
 input_method = HiddenInputField
+package = com.defold.watershader
 
 [physics]
 gravity_y = -1000.0
@@ -29,4 +31,7 @@ include_dirs = water
 
 [native_extension]
 app_manifest = /macos.appmanifest
+
+[shader]
+exclude_gles_sm100 = 1
 

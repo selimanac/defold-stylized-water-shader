@@ -13,6 +13,14 @@ Open your `game.project` file, select  `Project` and add a  `Dependencies` field
 >https://github.com/selimanac/defold-depth-of-field/archive/refs/heads/main.zip  
 >
 
+[!WARNING]
+> You have to set `shader.exclude_gles_sm100 = 1 in your game.project`
+
+```ini
+[shader]
+exclude_gles_sm100 = 1
+```
+
 ---
 
 ## Toss a Coin to Your Witcher

@@ -9,3 +9,17 @@ Thumbs.db
 .project
 .cproject
 builtins
+compile_commands.json
+manifest.private.der
+manifest.public.der
+RELEASE-NOTES.md
+*.sublime-project
+*.sublime-workspace
+*.appmanifest
+.luarc.json
+/.cache
+*.jar
+*.zsh
+/bundle
+*.keystore
+debug.*

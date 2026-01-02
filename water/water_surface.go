@@ -20,7 +20,7 @@ embedded_components {
   "  }\n"
   "  textures {\n"
   "    sampler: \"reflection_cubemap\"\n"
-  "    texture: \"/example/components/skybox.cubemap\"\n"
+  "    texture: \"/example/components/day_skybox.cubemap\"\n"
   "  }\n"
   "  textures {\n"
   "    sampler: \"edge_foam_texture\"\n"

@@ -1,0 +1,27 @@
+mesh: "/water/assets/mesh/uniform_high_poly_plane.glb"
+name: "water"
+materials {
+  name: "default"
+  material: "/water/material/stylized_water.material"
+  textures {
+    sampler: "edge_foam_texture"
+    texture: "/water/assets/textures/default_water_foam.png"
+  }
+  textures {
+    sampler: "foam_texture"
+    texture: "/water/assets/textures/default_foam_caustics_shallow.jpg"
+  }
+  textures {
+    sampler: "reflection_cubemap"
+    texture: "/example/components/sunset_skybox.cubemap"
+  }
+  textures {
+    sampler: "sparkle_normal_map"
+    texture: "/water/assets/textures/default_sparkle_normal.png"
+  }
+  textures {
+    sampler: "wave_normal_map"
+    texture: "/water/assets/textures/waves_large.png"
+  }
+}
+create_go_bones: false

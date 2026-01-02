@@ -12,6 +12,7 @@ uniform mediump sampler2D tex0;
 uniform fs_uniforms
 {
     mediump vec4 uv_repeat;
+    mediump vec4 ambient_light;
 };
 
 void main()
@@ -22,7 +23,7 @@ void main()
     // Sample texture with repeated UVs
     vec4 color = texture(tex0, uv);
 
-    vec3 ambient_light = vec3(0.4, 0.4, 0.5);
+    vec3 ambient_light = ambient_light.xyz;
     vec3 diff_light = vec3(normalize(var_light.xyz - var_position.xyz));
     diff_light = max(dot(var_normal, diff_light), 0.0) + ambient_light;
     diff_light = clamp(diff_light, 0.0, 1.0);
