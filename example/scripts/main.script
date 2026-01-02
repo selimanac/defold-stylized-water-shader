@@ -1,5 +1,5 @@
 local settings = require "example.scripts.lib.settings_imgui"
-local water    = require("water.water")
+local water = require("water.water")
 
 go.property("time_speed", 0.2)
 go.property("is_day", true)

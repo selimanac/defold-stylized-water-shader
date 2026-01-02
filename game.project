@@ -9,7 +9,7 @@ shared_state = 1
 width = 1920
 height = 1080
 high_dpi = 1
-samples = 2
+samples = 0
 
 [android]
 input_method = HiddenInputField
@@ -34,4 +34,7 @@ app_manifest = /macos.appmanifest
 
 [shader]
 exclude_gles_sm100 = 1
+
+[graphics]
+texture_profiles = /builtins/graphics/default.texture_profiles
 

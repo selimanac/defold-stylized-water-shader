@@ -1,7 +1,5 @@
 #version 140
 
-precision mediump float;
-
 // DEBUGS
 // #define DEBUG_REFLECTION
 // #define DEBUG_FRESNEL
@@ -81,7 +79,7 @@ vec2 panner(vec2 uv, vec2 direction, float speed)
 }
 
 // Unpack normal
-vec3 unpack_normal(vec4 packed)
+vec3 unpack_normal_xyz(vec4 packed)
 {
     vec3 normal;
     normal.xy = packed.xy * 2.0 - 1.0;
@@ -90,56 +88,56 @@ vec3 unpack_normal(vec4 packed)
 }
 
 // Motion four-way chaos for normals
-vec3 motion_four_way_chaos_normal(sampler2D tex, vec2 uv, float speed)
+vec3 motion_four_way_chaos_normal(vec2 uv, float speed)
 {
     vec2 uv1 = panner(uv + vec2(0.000, 0.000), vec2(0.1, 0.1), speed);
     vec2 uv2 = panner(uv + vec2(0.418, 0.355), vec2(-0.1, -0.1), speed);
     vec2 uv3 = panner(uv + vec2(0.865, 0.148), vec2(-0.1, 0.1), speed);
     vec2 uv4 = panner(uv + vec2(0.651, 0.752), vec2(0.1, -0.1), speed);
 
-    vec3 sample1 = unpack_normal(texture(tex, uv1));
-    vec3 sample2 = unpack_normal(texture(tex, uv2));
-    vec3 sample3 = unpack_normal(texture(tex, uv3));
-    vec3 sample4 = unpack_normal(texture(tex, uv4));
+    vec3 sample1 = unpack_normal_xyz(texture(wave_normal_map, uv1));
+    vec3 sample2 = unpack_normal_xyz(texture(wave_normal_map, uv2));
+    vec3 sample3 = unpack_normal_xyz(texture(wave_normal_map, uv3));
+    vec3 sample4 = unpack_normal_xyz(texture(wave_normal_map, uv4));
 
     return normalize(sample1 + sample2 + sample3 + sample4);
 }
 
 // Motion four-way chaos for regular textures
-vec3 motion_four_way_chaos_texture(sampler2D tex, vec2 uv, float speed)
+vec3 motion_four_way_chaos_texture(vec2 uv, float speed)
 {
     vec2 uv1 = panner(uv + vec2(0.000, 0.000), vec2(0.1, 0.1), speed);
     vec2 uv2 = panner(uv + vec2(0.418, 0.355), vec2(-0.1, -0.1), speed);
     vec2 uv3 = panner(uv + vec2(0.865, 0.148), vec2(-0.1, 0.1), speed);
     vec2 uv4 = panner(uv + vec2(0.651, 0.752), vec2(0.1, -0.1), speed);
 
-    vec3 sample1 = texture(tex, uv1).rgb;
-    vec3 sample2 = texture(tex, uv2).rgb;
-    vec3 sample3 = texture(tex, uv3).rgb;
-    vec3 sample4 = texture(tex, uv4).rgb;
+    vec3 sample1 = texture(foam_texture, uv1).rgb;
+    vec3 sample2 = texture(foam_texture, uv2).rgb;
+    vec3 sample3 = texture(foam_texture, uv3).rgb;
+    vec3 sample4 = texture(foam_texture, uv4).rgb;
 
     return (sample1 + sample2 + sample3 + sample4) / 4.0;
 }
 
 // foam for distant pixels
-vec3 motion_simple_foam(sampler2D tex, vec2 uv, float speed)
+vec3 motion_simple_foam(vec2 uv, float speed)
 {
     vec2 uv1 = panner(uv, vec2(0.1, 0.1), speed);
-    return texture(tex, uv1).rgb;
+    return texture(foam_texture, uv1).rgb;
 }
 
 // Sparkles
-vec3 motion_four_way_sparkle(sampler2D tex, vec2 uv, vec4 coord_scale, float speed)
+vec3 motion_four_way_sparkle(vec2 uv, vec4 coord_scale, float speed)
 {
     vec2 uv1 = panner(uv * coord_scale.x, vec2(0.1, 0.1), speed);
     vec2 uv2 = panner(uv * coord_scale.y, vec2(-0.1, -0.1), speed);
     vec2 uv3 = panner(uv * coord_scale.z, vec2(-0.1, 0.1), speed);
     vec2 uv4 = panner(uv * coord_scale.w, vec2(0.1, -0.1), speed);
 
-    vec3 sample1 = unpack_normal(texture(tex, uv1));
-    vec3 sample2 = unpack_normal(texture(tex, uv2));
-    vec3 sample3 = unpack_normal(texture(tex, uv3));
-    vec3 sample4 = unpack_normal(texture(tex, uv4));
+    vec3 sample1 = unpack_normal_xyz(texture(sparkle_normal_map, uv1));
+    vec3 sample2 = unpack_normal_xyz(texture(sparkle_normal_map, uv2));
+    vec3 sample3 = unpack_normal_xyz(texture(sparkle_normal_map, uv3));
+    vec3 sample4 = unpack_normal_xyz(texture(sparkle_normal_map, uv4));
 
     vec3 normalA = vec3(sample1.x, sample2.y, 1.0);
     vec3 normalB = vec3(sample3.x, sample4.y, 1.0);
@@ -185,7 +183,7 @@ void main()
 
     // Sample wave normal map
     vec2 normal_uv = var_world_position.xz / wave_normal_params.x;
-    vec3 normal_ts = motion_four_way_chaos_normal(wave_normal_map, normal_uv, wave_normal_params.y);
+    vec3 normal_ts = motion_four_way_chaos_normal(normal_uv, wave_normal_params.y);
     vec3 normal_ws = tbn * normal_ts;
 
     // Distance mask for fading (using density_params.x for distance_density)
@@ -291,12 +289,12 @@ void main()
     if (distance_to_camera < lod_params.y)
     {
         // Close range: Full quality foam with 4 texture samples
-        foam_color = motion_four_way_chaos_texture(foam_texture, foam_uv, foam_params.y);
+        foam_color = motion_four_way_chaos_texture(foam_uv, foam_params.y);
     }
     else
     {
         // Far range: Simplified foam with 1 texture sample
-        foam_color = motion_simple_foam(foam_texture, foam_uv, foam_params.y);
+        foam_color = motion_simple_foam(foam_uv, foam_params.y);
     }
     foam_color *= distance_mask * foam_params.w;
 
@@ -320,10 +318,8 @@ void main()
     // LOD: Skip sparkle for distant pixels to save 8 texture samples
     if (sparkle_params.w > 0.5 && distance_to_camera < lod_params.x)
     {
-        vec3 sparkle1 = motion_four_way_sparkle(
-        sparkle_normal_map, var_world_position.xz / sparkle_params.x, vec4(1.0, 2.0, 3.0, 4.0), sparkle_params.y);
-        vec3 sparkle2 = motion_four_way_sparkle(
-        sparkle_normal_map, var_world_position.xz / sparkle_params.x, vec4(1.0, 0.5, 2.5, 2.0), sparkle_params.y);
+        vec3 sparkle1 = motion_four_way_sparkle(var_world_position.xz / sparkle_params.x, vec4(1.0, 2.0, 3.0, 4.0), sparkle_params.y);
+        vec3 sparkle2 = motion_four_way_sparkle(var_world_position.xz / sparkle_params.x, vec4(1.0, 0.5, 2.5, 2.0), sparkle_params.y);
 
         // Sparkle calculation with scalar component products
         float sparkle_mask = dot(sparkle1, sparkle2) *

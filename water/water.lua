@@ -135,8 +135,8 @@ local constants = {
 	edge_foam_color    = vmath.vector4(1.0, 1.0, 1.0, 1.0),
 
 	-- waves
-	wave1              = vmath.vector4(1.00, 0.1, 20.0, 3.3),
-	wave2              = vmath.vector4(0.7, 0.8, 15.0, 1.8),
+	wave1              = vmath.vector4(1.5, 0.3, 20.0, 3.3),
+	wave2              = vmath.vector4(1.6, 0.6, 15.0, 1.8),
 	wave_normal_params = vmath.vector4(15.0, 1.0, 0.0, 0.0),
 
 	-- sun
@@ -153,7 +153,7 @@ local constants = {
 	sparkle_params    = vmath.vector4(40.0, 0.3, 10000.0, 1.0),
 
 	-- density
-	density_params    = vmath.vector4(0.02, 0.6, 0.0, 1.0),
+	density_params    = vmath.vector4(0.02, 0.4, 0.0, 1.0),
 
 	-- camera
 	camera_pos        = vmath.vector4(0.0, 0.0, 0.0, 0.0),
