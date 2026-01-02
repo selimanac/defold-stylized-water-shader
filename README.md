@@ -1,34 +1,26 @@
-# Defold Stylized Water
+# Defold Stylized Water Shader
 
 A stylized water shader implementation for the Defold game engine, featuring animated wave surfaces, foam effects, sparkles, and customizable rendering parameters. This is a direct port of [danielshervheim/unity-stylized-water](https://github.com/danielshervheim/unity-stylized-water) from Unity to Defold.
 
-![Water Demo](https://img.shields.io/badge/Defold-Water%20Shader-blue)
 
-## Features
-
-- **Animated Water Surface** - Dual-layer Gerstner-like wave simulation with configurable parameters
-- **Stylized Rendering** - Customizable shallow, deep, and distance colors
-- **Foam Effects** - Texture-based foam animation with noise distortion
-- **Edge Foam** - Depth-based foam at shorelines and object intersections
-- **Sun Specular** - Stylized sun reflections with adjustable sharpness
-- **Sparkle Effects** - Glitter/sparkle effects on water surface
-- **Refraction** - Screen-space refraction with optional chromatic aberration
-- **Reflections** - Cubemap-based environment reflections with fresnel effect
-- **Interactive Objects** - CPU-side wave calculations for floating objects
-- **Real-time Control** - Full runtime API for all shader parameters
 
 ## Installation
 
-1. Add this project as a library dependency in your `game.project` file:
-```
-[library]
-include_dirs = water
-```
+You can use the DoF in your own project by adding this project as a [Defold library dependency](https://defold.com/manuals/libraries/#setting-up-library-dependencies).  
+Open your `game.project` file, select  `Project` and add a  `Dependencies` field:
 
-2. Add the water module to your render script:
-```lua
-local water = require("water.water")
-```
+
+>https://github.com/selimanac/defold-depth-of-field/archive/refs/heads/main.zip  
+>
+
+---
+
+## Toss a Coin to Your Witcher
+If you find my [Defold Extensions](https://github.com/selimanac) useful for your projects, please consider [supporting](https://github.com/sponsors/selimanac) it.  
+I'd love to hear about your projects! Please share your released projects that use my native extensions. It would be very motivating for me.
+
+---
+
 
 ## Quick Start
 
@@ -753,17 +745,6 @@ water.set_reflection_params(0.0, 3.0)
 ## Credits
 
 - Original Unity implementation: [danielshervheim/unity-stylized-water](https://github.com/danielshervheim/unity-stylized-water)
-- Defold port: This repository
-- Textures: See `assets/Textures/README.txt` for attribution
 
-## License
-
-[Insert your license here]
-
-## Support
-
-If you run into trouble, help is available in the [Defold forum](https://forum.defold.com).
-
-For more examples and advanced usage, see [WATER_API_EXAMPLES.md](WATER_API_EXAMPLES.md).
 
 ---
