@@ -1,5 +1,5 @@
 [bootstrap]
-main_collection = /example/scenes/sunset.collectionc
+main_collection = /example/scenes/day.collectionc
 render = /water/render/water.renderc
 
 [script]
