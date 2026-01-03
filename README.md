@@ -6,11 +6,11 @@ A stylized water shader implementation for the Defold game engine, featuring ani
 
 ## Installation
 
-You can use the DoF in your own project by adding this project as a [Defold library dependency](https://defold.com/manuals/libraries/#setting-up-library-dependencies).  
+You can use the Water Shader in your own project by adding this project as a [Defold library dependency](https://defold.com/manuals/libraries/#setting-up-library-dependencies).  
 Open your `game.project` file, select  `Project` and add a  `Dependencies` field:
 
 
->https://github.com/selimanac/defold-depth-of-field/archive/refs/heads/main.zip  
+>https://github.com/selimanac/defold-stylized-water-shader/archive/refs/heads/main.zip  
 >
 
 [!WARNING]
@@ -505,24 +505,18 @@ Get current refraction parameters.
 
 > **⚠️ NOTE**: Cubemap reflections are **enabled by default** but require a cubemap texture to be bound to work properly.
 
-#### Enabling Reflections
+#### Disabling Reflections
 
-To use cubemap reflections, you must:
+To disable the cubemap reflections, you must:
 
-1. **Uncomment the shader code** in `water/material/stylized_water.fp`:
-   - Uncomment the `uniform samplerCube reflection_cubemap;` line
-   - Uncomment the reflection code block in the `main()` function
+1. **Comment the shader code** in `water/material/stylized_water.fp`:
+   - Comment the `uniform samplerCube reflection_cubemap;` line
+   - Comment the reflection code block in the `main()` function
 
-2. **Uncomment the sampler** in `water/material/stylized_water.material`:
-   - Find and uncomment the `samplers { name: "reflection_cubemap" ...` block
+2. **Comment the sampler** in `water/material/stylized_water.material`:
+   - Find and comment the `samplers { name: "reflection_cubemap" ...` block
 
-3. **Bind a cubemap texture** in your collection:
-   ```
-   textures {
-     sampler: "reflection_cubemap"
-     texture: "/main/skybox.cubemap"
-   }
-   ```
+
 
 #### `water.set_reflection_params(strength, fresnel_power)`
 Configure cubemap-based reflection effects (after enabling reflections as described above).
@@ -730,10 +724,8 @@ water.set_reflection_params(0.0, 3.0)
 - **Color Values**: All color values are in the range 0.0-1.0 (not 0-255)
 - **Alpha Channel**: Alpha is not used - the shader hardcodes output alpha to 1.0
 - **Direction Values**: Direction values are in radians (0-2π), where 0 = east, π/2 = north
-- **Multiple Return Values**: All getter functions return multiple values that can be unpacked
-- **No Validation**: The API does not validate parameter ranges - ensure values are reasonable for best results
-- **Refraction**: Scene is automatically rendered to a render target by the water module. Keep strength 0.1-0.3 for best results.
-- **Reflection**: Bind cubemap texture to water model component in collection. Fresnel power controls angle-dependent effect (1.0 = uniform, 5.0 = strong).
+- **Refraction**: Scene is rendered to a render target. Keep the strength between 0.1 and 0.3 for best results. Higher values may cause artifacts.
+- **Reflection**: Fresnel power controls angle-dependent effect; 1.0 = uniform, 5.0 = strong.
 
 ## Project Structure
 

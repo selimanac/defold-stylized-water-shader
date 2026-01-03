@@ -21,8 +21,6 @@ uniform sampler2D   sparkle_normal_map;
 uniform sampler2D   refraction_texture;
 uniform samplerCube reflection_cubemap;
 
-const vec3          up_normal = vec3(0.0, 1.0, 0.0);
-
 uniform fp_uniforms
 {
     // Camera and Time (frequently updated)
@@ -70,6 +68,8 @@ uniform fp_uniforms
     mediump vec4 lod_params;
 };
 
+const vec3 up_normal = vec3(0.0, 1.0, 0.0);
+
 #define PI 3.1415926536
 
 // UV panning helper
@@ -79,7 +79,7 @@ vec2 panner(vec2 uv, vec2 direction, float speed)
 }
 
 // Unpack normal
-vec3 unpack_normal_xyz(vec4 packed)
+vec3 unpack_normal(vec4 packed)
 {
     vec3 normal;
     normal.xy = packed.xy * 2.0 - 1.0;
@@ -95,10 +95,10 @@ vec3 motion_four_way_chaos_normal(vec2 uv, float speed)
     vec2 uv3 = panner(uv + vec2(0.865, 0.148), vec2(-0.1, 0.1), speed);
     vec2 uv4 = panner(uv + vec2(0.651, 0.752), vec2(0.1, -0.1), speed);
 
-    vec3 sample1 = unpack_normal_xyz(texture(wave_normal_map, uv1));
-    vec3 sample2 = unpack_normal_xyz(texture(wave_normal_map, uv2));
-    vec3 sample3 = unpack_normal_xyz(texture(wave_normal_map, uv3));
-    vec3 sample4 = unpack_normal_xyz(texture(wave_normal_map, uv4));
+    vec3 sample1 = unpack_normal(texture(wave_normal_map, uv1));
+    vec3 sample2 = unpack_normal(texture(wave_normal_map, uv2));
+    vec3 sample3 = unpack_normal(texture(wave_normal_map, uv3));
+    vec3 sample4 = unpack_normal(texture(wave_normal_map, uv4));
 
     return normalize(sample1 + sample2 + sample3 + sample4);
 }
@@ -134,10 +134,10 @@ vec3 motion_four_way_sparkle(vec2 uv, vec4 coord_scale, float speed)
     vec2 uv3 = panner(uv * coord_scale.z, vec2(-0.1, 0.1), speed);
     vec2 uv4 = panner(uv * coord_scale.w, vec2(0.1, -0.1), speed);
 
-    vec3 sample1 = unpack_normal_xyz(texture(sparkle_normal_map, uv1));
-    vec3 sample2 = unpack_normal_xyz(texture(sparkle_normal_map, uv2));
-    vec3 sample3 = unpack_normal_xyz(texture(sparkle_normal_map, uv3));
-    vec3 sample4 = unpack_normal_xyz(texture(sparkle_normal_map, uv4));
+    vec3 sample1 = unpack_normal(texture(sparkle_normal_map, uv1));
+    vec3 sample2 = unpack_normal(texture(sparkle_normal_map, uv2));
+    vec3 sample3 = unpack_normal(texture(sparkle_normal_map, uv3));
+    vec3 sample4 = unpack_normal(texture(sparkle_normal_map, uv4));
 
     vec3 normalA = vec3(sample1.x, sample2.y, 1.0);
     vec3 normalB = vec3(sample3.x, sample4.y, 1.0);
@@ -186,13 +186,13 @@ void main()
     vec3 normal_ts = motion_four_way_chaos_normal(normal_uv, wave_normal_params.y);
     vec3 normal_ws = tbn * normal_ts;
 
-    // Distance mask for fading (using density_params.x for distance_density)
+    // Distance mask for fading using density_params.x for distance_density
     float distance_to_camera = length(var_world_position - camera_pos.xyz);
     float distance_mask = exp(-density_params.x * distance_to_camera);
 
-    // ------------------------------ //
+    // --------------------------------- //
     // SAMPLE DEPTH BUFFER FOR EDGE FOAM //
-    // ------------------------------ //
+    // --------------------------------- //
 
     // Calculate screen coordinates from clip space position
     vec2 screen_coord = (var_clip_position.xy / var_clip_position.w) * 0.5 + 0.5;
@@ -214,19 +214,17 @@ void main()
     // ---------- //
 
     // Calculate transmittance for depth-based coloring (Unity approach)
-    // Clamp to avoid complete transparency and ensure deep water shows at 50% minimum
     float transmittance = exp(-density_params.y * optical_depth);
     transmittance = max(0.5, transmittance);
 
-    // Base color blending matching Unity's approach
-    // Start with shallow, blend to deep based on transmittance, then blend to far based on distance
+    // Base color blending matching (Unity approach)
     vec3 base_color = shallow_color.rgb;
     base_color = mix(deep_color.rgb, base_color, transmittance);
     base_color = mix(far_color.rgb, base_color, distance_mask);
 
-    // ------------ //
+    // ----------- //
     // REFRACTION //
-    // ------------ //
+    // ----------- //
 
     vec3 refraction_color = vec3(0.0);
     if (refraction_params.x > 0.0)
@@ -238,7 +236,7 @@ void main()
         // Clamp to screen bounds to avoid sampling outside
         refract_coord = clamp(refract_coord, vec2(0.0), vec2(1.0));
 
-        // Sample refraction texture with optional chromatic aberration
+        // Sample refraction texture with chromatic aberration (optional)
         if (refraction_params.y > 0.0)
         {
             // Chromatic aberration: sample RGB channels with slight offsets
@@ -253,29 +251,27 @@ void main()
             refraction_color = texture(refraction_texture, refract_coord).rgb;
         }
 
-        // Blend refraction with base color based on optical depth
-        // Deeper water shows less refraction (more of base color)
+        // Blend
         float refraction_blend = exp(-optical_depth * 0.5);
         base_color = mix(base_color, refraction_color, refraction_blend * saturate(refraction_params.x));
     }
 
-    // ------------ //
+    // ----------- //
     // REFLECTION //
-    // ------------ //
+    // ---------- //
 
     vec3 reflection_color = vec3(0.0);
     if (reflection_params.x > 0.0)
     {
-        // Calculate reflection vector for cubemap sampling (use perturbed normal)
+        // Calculate reflection vector for cubemap sampling
+        // https://defold.com/examples/model/cubemap/
         vec3 reflection_dir = reflect(view_dir, normal_ws);
         reflection_color = texture(reflection_cubemap, reflection_dir).rgb;
 
-        // Fresnel effect:  Use UP vector since var_world_normal. y is zero
-        // For flat water surface, the base normal should be (0, 1, 0)
-        //  vec3  up_normal = vec3(0.0, 1.0, 0.0);
+        // Fresnel effect
         float fresnel = pow(1.0 - saturate(dot(-view_dir, up_normal)), reflection_params.y);
 
-        // Blend reflection with base color using fresnel and strength
+        // Blend
         base_color = mix(base_color, reflection_color, fresnel * reflection_params.x);
     }
 
@@ -283,17 +279,17 @@ void main()
     // FOAM COLOR //
     // ---------- //
 
-    // LOD: Use simplified foam for distant pixels (1 sample instead of 4)
+    // LOD
     vec2 foam_uv = (var_world_position.xz / foam_params.x) + (foam_params.z * normal_ts.xz);
     vec3 foam_color;
     if (distance_to_camera < lod_params.y)
     {
-        // Close range: Full quality foam with 4 texture samples
+        // Close range: 4 texture samples
         foam_color = motion_four_way_chaos_texture(foam_uv, foam_params.y);
     }
     else
     {
-        // Far range: Simplified foam with 1 texture sample
+        // Far range: 1 texture sample
         foam_color = motion_simple_foam(foam_uv, foam_params.y);
     }
     foam_color *= distance_mask * foam_params.w;
@@ -313,15 +309,12 @@ void main()
     // ------------- //
 
     vec3 sparkle = vec3(0.0);
-
-    // Only calculate sparkle if enabled AND within LOD distance
-    // LOD: Skip sparkle for distant pixels to save 8 texture samples
+    // LOD
     if (sparkle_params.w > 0.5 && distance_to_camera < lod_params.x)
     {
-        vec3 sparkle1 = motion_four_way_sparkle(var_world_position.xz / sparkle_params.x, vec4(1.0, 2.0, 3.0, 4.0), sparkle_params.y);
-        vec3 sparkle2 = motion_four_way_sparkle(var_world_position.xz / sparkle_params.x, vec4(1.0, 0.5, 2.5, 2.0), sparkle_params.y);
+        vec3  sparkle1 = motion_four_way_sparkle(var_world_position.xz / sparkle_params.x, vec4(1.0, 2.0, 3.0, 4.0), sparkle_params.y);
+        vec3  sparkle2 = motion_four_way_sparkle(var_world_position.xz / sparkle_params.x, vec4(1.0, 0.5, 2.5, 2.0), sparkle_params.y);
 
-        // Sparkle calculation with scalar component products
         float sparkle_mask = dot(sparkle1, sparkle2) *
         saturate(3.0 * sqrt(saturate(sparkle1.x * sparkle2.x)));
         sparkle_mask = pow(saturate(sparkle_mask), sparkle_params.z); // pow([0,1], positive) stays in [0,1]
@@ -336,15 +329,10 @@ void main()
     float edge_foam_mask = 0.0;
     if (edge_foam_type.x == 0.0)
     {
-        // 1. Version
+        // 1. Version: Edge foam calculation matching Unity
 
-        // Edge foam calculation matching Unity
-        // Add small epsilon to prevent division by zero and reduce flickering
         float foam_depth_factor = optical_depth / max(0.01, edge_foam_params.x);
         edge_foam_mask = exp(-foam_depth_factor);
-
-        // Use smoothstep instead of round for smoother transitions and less flickering
-        // This creates a more gradual edge while still maintaining definition
         edge_foam_mask = smoothstep(0.4, 0.6, edge_foam_mask);
 
         vec3 edge_foam = edge_foam_color.rgb * edge_foam_mask;
@@ -352,7 +340,7 @@ void main()
 
     else
     {
-        // 2. Version
+        // 2. Version: Textured
         float foam_depth_factor = optical_depth / max(0.01, edge_foam_params.x);
         float edge_foam_base = exp(-foam_depth_factor);
 
@@ -375,8 +363,6 @@ void main()
     // ----------- //
 
 #ifdef DEBUG_REFLECTION
-    // Use unpurturbed normal for clean reflection view
-
     vec3 clean_reflection_dir = reflect(view_dir, up_normal); // normalize(var_world_normal) --up_normal
     vec3 clean_reflection = texture(reflection_cubemap, clean_reflection_dir).rgb;
     fragColor = vec4(clean_reflection, 1.0);
@@ -384,28 +370,19 @@ void main()
 #endif
 
 #ifdef DEBUG_FRESNEL
-    // Use UP vector as the correct water surface normal
-    // vec3  up_normal = vec3(0.0, 1.0, 0.0);
     vec3  to_camera = normalize(camera_pos.xyz - var_world_position);
-
     float NdotV = saturate(dot(up_normal, to_camera));
     float fresnel = pow(1.0 - NdotV, 5.0);
 
-    // Show fresnel gradient (should be dark at top view, bright at grazing angles)
+    // Show fresnel gradient
     fragColor = vec4(vec3(fresnel), 1.0);
     return;
 #endif
 
 #ifdef DEBUG_FRESNEL_REFLECTION
-    // Use UP vector for fresnel
-    //  vec3 up_normal = vec3(0.0, 1.0, 0.0);
-    vec3 to_camera = normalize(camera_pos.xyz - var_world_position);
-
-    // Use unpurturbed UP normal for clean reflection view
-    vec3 clean_reflection_dir = reflect(view_dir, up_normal);
-    vec3 clean_reflection = texture(reflection_cubemap, clean_reflection_dir).rgb;
-
-    // Calculate fresnel
+    vec3  to_camera = normalize(camera_pos.xyz - var_world_position);
+    vec3  clean_reflection_dir = reflect(view_dir, up_normal);
+    vec3  clean_reflection = texture(reflection_cubemap, clean_reflection_dir).rgb;
     float fresnel = pow(1.0 - saturate(dot(up_normal, to_camera)), 5.0);
 
     // Show fresnel effect on reflection
@@ -414,25 +391,19 @@ void main()
 #endif
 
 #ifdef DEBUG_FRESNEL_BLEND
-    // Use UP vector for fresnel
-    // vec3 up_normal = vec3(0.0, 1.0, 0.0);
-    vec3 to_camera = normalize(camera_pos.xyz - var_world_position);
-
-    // Use unpurturbed UP normal for clean reflection view
-    vec3 clean_reflection_dir = reflect(view_dir, up_normal);
-    vec3 clean_reflection = texture(reflection_cubemap, clean_reflection_dir).rgb;
-
-    // Calculate fresnel
+    vec3  to_camera = normalize(camera_pos.xyz - var_world_position);
+    vec3  clean_reflection_dir = reflect(view_dir, up_normal);
+    vec3  clean_reflection = texture(reflection_cubemap, clean_reflection_dir).rgb;
     float fresnel = pow(1.0 - saturate(dot(up_normal, to_camera)), 5.0);
+    vec3  base = vec3(0.0, 0.2, 0.4); // Some base water color
 
-    // Blend base color to reflection based on fresnel
-    vec3 base = vec3(0.0, 0.2, 0.4); // Some base water color
     fragColor = vec4(mix(base, clean_reflection, fresnel), 1.0);
     return;
 #endif
 
     // vec3 final_color = base_color + foam_color + sun_specular + sparkle + edge_foam;
 
+    // With edge alpha
     vec3 final_color =
     base_color +
     foam_color +

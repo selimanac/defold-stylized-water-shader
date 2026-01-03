@@ -62,8 +62,10 @@ local function set_sunset()
 	))
 end
 
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
+
 	--profiler.enable_ui(true)
 	--profiler.set_ui_view_mode(profiler.VIEW_MODE_MINIMIZED)
 
@@ -72,6 +74,8 @@ function init(self)
 	else
 		set_sunset()
 	end
+
+
 
 	water.init(msg.url("/camera"), msg.url("/camera#camera"), msg.url("/sun"), msg.url("/water_surface"), self.time_speed)
 	--set_tropical_water()
