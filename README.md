@@ -6,9 +6,11 @@ A stylized water shader implementation for the Defold game engine, featuring ani
 ![Water Shader](/.github/sunset.jpg?raw=true)
 
 
-[![Water Shader](http://img.youtube.com/vi/TY02id9Rffs/0.jpg)](http://www.youtube.com/watch?v=TY02id9Rffs)
 
-[![Water Shader](http://img.youtube.com/vi/4UVZur9TUp8/0.jpg)](http://www.youtube.com/watch?v=4UVZur9TUp8)
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=4UVZur9TUp8" target="_blank"><img src="http://img.youtube.com/vi/4UVZur9TUp8/0.jpg" alt="4UVZur9TUp8" width="830"  border="0" /></a>
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=TY02id9Rffs" target="_blank"><img src="http://img.youtube.com/vi/TY02id9Rffs/0.jpg" alt="TY02id9Rffs" width="830"  border="0" /></a>
 
 ## Installation
 
