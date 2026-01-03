@@ -5,6 +5,11 @@ A stylized water shader implementation for the Defold game engine, featuring ani
 ![Water Shader](/.github/day.jpg?raw=true)
 ![Water Shader](/.github/sunset.jpg?raw=true)
 
+
+[![Water Shader](http://img.youtube.com/vi/TY02id9Rffs/0.jpg)](http://www.youtube.com/watch?v=TY02id9Rffs)
+
+[![Water Shader](http://img.youtube.com/vi/4UVZur9TUp8/0.jpg)](http://www.youtube.com/watch?v=4UVZur9TUp8)
+
 ## Installation
 
 You can use the Water Shader in your own project by adding this project as a [Defold library dependency](https://defold.com/manuals/libraries/#setting-up-library-dependencies).  
