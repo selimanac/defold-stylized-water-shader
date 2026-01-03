@@ -14,123 +14,7 @@ local water_instance         = msg.url()
 local time                   = 0
 local time_speed             = 0
 
---[[
-	WATER SHADER CONSTANTS DOCUMENTATION
-	
-	wave1 (vec4) - First wave layer
-		x: Direction (radians, 0-2π) - Wave propagation direction (0° = east, π/2 = north)
-		y: Amplitude - Wave height
-			0.1 - 0.5 = gentle waves
-			0.5 - 1.0 = medium waves
-			1.0 - 2.0 = rough ocean
-			2.0+ = storm!
-		z: Wavelength - Distance between wave peaks
-			10.0 - 20.0 = choppy water
-			20.0 - 40.0 = ocean waves
-			40.0+ = very long gentle swells
-		w: Speed - Animation speed
-			0.5 - 1.0 = slow/calm
-			1.0 - 3.0 = moderate
-			3.0 - 5.0 = fast
-			5.0+ = very fast
-	
-	wave2 (vec4) - Second wave layer (same parameters as wave1)
-		x: Direction (radians)
-		y: Amplitude
-		z: Wavelength
-		w: Speed
-	
-	wave_normal_params (vec4) - Animated normal map for surface detail
-		x: Scale - How tiled the normal map is
-			5.0 = large ripples
-			10.0 = medium ripples
-			20.0 = tiny ripples
-		y: Speed - Animation speed (0.5 = slow, 1.0 = normal, 2.0 = fast)
-	
-	shallow_color (vec4) - Water color in shallow areas (RGB, 0.0-1.0)
-	deep_color (vec4) - Water color in deep areas (RGB, 0.0-1.0)
-	far_color (vec4) - Water color at distance from camera (RGB, 0.0-1.0)
-	Note: Alpha channel is not used in the shader (hardcoded to 1.0)
-	
-	foam_params (vec4) - Foam texture layer
-		x: Scale - Foam texture tiling (lower = bigger foam patches)
-		y: Speed - Animation speed
-		z: Noise Scale - Normal map distortion amount (0.0-1.0)
-			0.0 = no distortion (flat foam)
-			0.5 = moderate distortion
-			1.0 = heavy distortion
-		w: Contribution - Overall foam visibility (0.0-1.0)
-			0.0 = no foam
-			0.5 = subtle foam
-			1.0 = full foam
-	
-	density_params (vec4) - Distance and depth rendering parameters
-		x: Distance Density - Fade to far_color based on camera distance
-			0.01 = very slow fade (see close color from far away)
-			0.1 = normal fade
-			0.5 = quick fade
-		y: Depth Density - Water depth color blending intensity
-			Higher values = faster transition from shallow to deep color
-	
-	sun_params (vec4) - Sun rendering parameters
-		x: Exponent - Sun specular sharpness
-			100 = big soft highlight
-			1000 = medium sharp highlight
-			10000 = tiny sharp highlight
-	
-	sun_color (vec4) - Sun light color (RGB, 0.0-1.0)
-	sun_direction (vec4) - Directional light direction (XYZ, normalized)
-	
-	sparkle_params (vec4) - Sparkle/glitter effect
-		x: Scale - Sparkle texture tiling
-		y: Speed - Animation speed
-		z: Exponent - Sharpness/intensity (higher = sharper, fewer sparkles)
-			1000 = lots of soft sparkles
-			10000 = medium sparkles
-			100000 = very few, very sharp sparkles
-		w: Enabled - 0.0 = disabled, 1.0 = enabled
-	
-	sparkle_color (vec4) - Sparkle tint color (RGB, 0.0-1.0)
-	
-	edge_foam_params (vec4) - Edge foam parameters
-		x: Depth Scale - How quickly foam fades with depth (lower = more foam)
-		y: Noise Strength - Noise distortion strength (~0.2–0.5 recommended)
-		z: Edge Softness - Edge blend softness (~0.02–0.15 recommended)
-		w: Alpha - Overall foam opacity (0.0-1.0)
-	
-	edge_foam_color (vec4) - Edge foam color (RGB, 0.0-1.0)
-	
-	edge_foam_type (vec4) - Edge foam rendering type
-		x: Type - 0 = no texture (solid color), 1 = textured
-
-	refraction_params (vec4) - Refraction effect parameters
-		x: Strength - Overall refraction intensity (0.0-1.0)
-			0.0 = no refraction
-			0.5 = moderate refraction
-			1.0 = strong refraction
-		y: Chromatic Aberration - Color separation effect (0.0-1.0)
-			0.0 = no aberration
-			0.5 = subtle color fringing
-			1.0 = strong color separation
-
-	reflection_params (vec4) - Reflection effect parameters
-		x: Strength - Overall reflection intensity (0.0-1.0)
-			0.0 = no reflection
-			0.5 = moderate reflection
-			1.0 = strong reflection
-		y: Fresnel Power - Controls angle-dependent reflection (1.0-5.0)
-			1.0 = reflection at all angles
-			3.0 = more reflection at grazing angles
-			5.0 = very strong grazing angle effect
-
-	lod_params (vec4) - Level-of-detail distance thresholds
-		x: Sparkle Distance - Max distance for sparkle effect (0-500)
-			Pixels beyond this distance skip sparkle (saves 8 texture samples)
-		y: Foam Distance - Max distance for full-quality foam (0-500)
-			Pixels beyond this distance use simplified foam (saves 3 texture samples)
-]]
-
-local constants = {
+local constants              = {
 	-- colors
 	shallow_color      = vmath.vector4(0.44, 0.95, 0.36, 1.0),
 	deep_color         = vmath.vector4(3 / 255, 9 / 255, 49 / 255, 1.0),
@@ -178,7 +62,6 @@ local constants = {
 	-- LOD (Level of Detail)
 	lod_params        = vmath.vector4(100.0, 150.0, 0.0, 0.0), -- sparkle_distance, foam_distance
 }
-
 
 local function internal_update_buffer(self)
 	self.water_constant_buffer.wave1 = constants.wave1
@@ -240,8 +123,6 @@ function water.init(camera_url, camera_component_url, sun_url, water_url, _time_
 	water_camera_component = camera_component_url
 	sun_instance           = sun_url
 	water_instance         = water_url
-	-- Note: Cubemap path parameter removed - reflections currently not supported
-	-- TODO: Implement proper cubemap reflection support
 
 	internal_update_camera()
 	internal_update_sun()
@@ -250,7 +131,6 @@ end
 function water.render_init(self)
 	self.predicates["water"] = render.predicate({ "water" })
 
-	-- RENDER TARGET BUFFER PARAMETERS
 	local color_params = {
 		format = graphics.TEXTURE_FORMAT_RGBA,
 		width = self.state.width,

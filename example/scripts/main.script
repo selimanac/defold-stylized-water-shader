@@ -53,7 +53,6 @@ local function set_sunset()
 	))
 end
 
-
 function init(self)
 	msg.post(".", "acquire_input_focus")
 
