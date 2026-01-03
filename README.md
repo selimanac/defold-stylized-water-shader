@@ -735,20 +735,6 @@ water.set_reflection_params(0.0, 3.0)
 - **Refraction**: Scene is rendered to a render target. Keep the strength between 0.1 and 0.3 for best results. Higher values may cause artifacts.
 - **Reflection**: Fresnel power controls angle-dependent effect; 1.0 = uniform, 5.0 = strong.
 
-## Project Structure
-
-```
-/
-├── water/                    # Water module
-│   ├── water.lua            # Main water API module
-│   ├── material/            # Water material and shaders
-│   └── render/              # Render script components
-├── assets/                  # Textures and models
-│   ├── Textures/           # Water textures (normals, foam, sparkles)
-│   └── Models/             # 3D models
-├── main/                    # Demo scene
-└── WATER_API_EXAMPLES.md   # Detailed usage examples
-```
 
 ## Credits
 
