@@ -21,7 +21,7 @@ Open your `game.project` file, select  `Project` and add a  `Dependencies` field
 >https://github.com/selimanac/defold-stylized-water-shader/archive/refs/heads/main.zip  
 >
 
-[!WARNING]
+> [!WARNING]
 > You have to set `shader.exclude_gles_sm100 = 1 in your game.project`
 
 ```ini
