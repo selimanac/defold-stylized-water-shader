@@ -2,7 +2,8 @@
 
 A stylized water shader implementation for the Defold game engine, featuring animated wave surfaces, foam effects, sparkles, and customizable rendering parameters. This is a direct port of [danielshervheim/unity-stylized-water](https://github.com/danielshervheim/unity-stylized-water) from Unity to Defold.
 
-
+![Water Shader](/.github/day.jpg?raw=true)
+![Water Shader](/.github/sunset.jpg?raw=true)
 
 ## Installation
 
