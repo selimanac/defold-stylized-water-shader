@@ -1,5 +1,11 @@
+-- =======================================
+-- MODULE
+-- =======================================
 local water                  = {}
 
+-- =======================================
+-- VARS
+-- =======================================
 local water_camera_instance  = msg.url()
 local water_camera_component = msg.url()
 local sun_instance           = msg.url()
@@ -124,7 +130,6 @@ local time_speed             = 0
 			Pixels beyond this distance use simplified foam (saves 3 texture samples)
 ]]
 
-
 local constants = {
 	-- colors
 	shallow_color      = vmath.vector4(0.44, 0.95, 0.36, 1.0),
@@ -175,7 +180,6 @@ local constants = {
 }
 
 
-
 local function internal_update_buffer(self)
 	self.water_constant_buffer.wave1 = constants.wave1
 	self.water_constant_buffer.wave2 = constants.wave2
@@ -203,7 +207,6 @@ local function internal_update_buffer(self)
 
 	self.light_constant_buffer.light = constants.light
 end
-
 
 local function internal_update_camera()
 	local camera_pos        = go.get_position(water_camera_instance)
@@ -247,7 +250,6 @@ end
 function water.render_init(self)
 	self.predicates["water"] = render.predicate({ "water" })
 
-
 	-- RENDER TARGET BUFFER PARAMETERS
 	local color_params = {
 		format = graphics.TEXTURE_FORMAT_RGBA,
@@ -267,7 +269,7 @@ function water.render_init(self)
 		mag_filter = graphics.TEXTURE_FILTER_NEAREST,
 		u_wrap     = graphics.TEXTURE_WRAP_CLAMP_TO_EDGE,
 		v_wrap     = graphics.TEXTURE_WRAP_CLAMP_TO_EDGE,
-		flags      = render.TEXTURE_BIT -- Create depth buffer as a texture so we can sample it
+		flags      = render.TEXTURE_BIT
 	}
 
 	self.depth_rt = render.render_target(
@@ -285,7 +287,6 @@ end
 
 function water.render_update(self, state, predicates, draw_options_world)
 	internal_update_buffer(self)
-
 
 	render.set_render_target(self.depth_rt)
 	render.set_render_target_size(self.depth_rt, state.window_width, state.window_height)

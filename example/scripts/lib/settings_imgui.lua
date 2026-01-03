@@ -45,7 +45,6 @@ local function colors_tab()
 		imgui.color_edit4("shallow_color", col)
 		water.set_shallow_color(col.x, col.y, col.z)
 
-
 		r, g, b = water.get_deep_color()
 		col = vmath.vector4(r, g, b, 1)
 		imgui.color_edit4("deep_color", col)
@@ -65,7 +64,6 @@ local function colors_tab()
 		col = vmath.vector4(r, g, b, 1)
 		imgui.color_edit4("sparkle_color", col)
 		water.set_sparkle_color(col.x, col.y, col.z)
-
 
 		r, g, b = water.get_edge_foam_color()
 		col = vmath.vector4(r, g, b, 1)
@@ -117,8 +115,6 @@ local function waves_tab()
 		if changed_speed then
 			water.set_wave1(wave1_direction, wave1_amplitude, wave1_wavelength, speed_val)
 		end
-
-
 
 		imgui.text_colored("WAVE 2", 1, 0, 0, 1)
 		imgui.separator()
@@ -195,7 +191,6 @@ local function foam_tab()
 		-- @param noise_scale Normal map distortion (0.0 no distortion, 0.5 moderate, 1.0 heavy)
 		-- @param contribution Overall foam visibility (0.0 no foam, 0.5 subtle, 1.0 full)
 		local foam_scale, foam_speed, foam_noise_scale, foam_contribution = water.get_foam_params()
-
 
 		imgui.set_next_item_width(50)
 		local changed_foam_scale, foam_scale_val = imgui.drag_float("scale##foam", foam_scale,

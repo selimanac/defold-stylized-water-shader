@@ -1,6 +1,5 @@
 local data = require "example.scripts.lib.data"
 
-
 -- The initial zoom level
 go.property("zoom", 3)
 -- The speed of the zoom

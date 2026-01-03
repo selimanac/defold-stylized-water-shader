@@ -4,15 +4,6 @@ local water = require("water.water")
 go.property("time_speed", 0.2)
 go.property("is_day", true)
 
-local function set_tropical_water()
-	water.set_wave1(0.0, 0.4, 25.0, 1.2)
-	water.set_wave2(0.8, 0.3, 28.0, 1.0)
-	water.set_shallow_color(0.44, 0.95, 0.80)
-	water.set_deep_color(0.0, 0.3, 0.6)
-	water.set_far_color(0.1, 0.5, 0.9)
-	water.set_foam_params(8.0, 1.2, 0.5, 0.7)
-end
-
 local function set_day()
 	water.set_shallow_color(75 / 255, 160 / 255, 195 / 255)
 	water.set_deep_color(88 / 255, 160 / 255, 200 / 255)
@@ -75,20 +66,14 @@ function init(self)
 		set_sunset()
 	end
 
-
-
 	water.init(msg.url("/camera"), msg.url("/camera#camera"), msg.url("/sun"), msg.url("/water_surface"), self.time_speed)
-	--set_tropical_water()
 
-	if settings then
-		settings.init()
-	end
+	settings.init()
 end
 
 function update(self, dt)
 	water.update_camera()
 	water.update(dt)
-	if settings then
-		settings.update()
-	end
+
+	settings.update()
 end
