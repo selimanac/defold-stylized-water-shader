@@ -1,7 +1,7 @@
 name: "skybox"
 tags: "skybox"
-vertex_program: "/example/components/materials/skybox/skybox.vp"
-fragment_program: "/example/components/materials/skybox/skybox.fp"
+vertex_program: "/water/material/skybox/skybox.vp"
+fragment_program: "/water/material/skybox/skybox.fp"
 vertex_constants {
   name: "view_proj"
   type: CONSTANT_TYPE_VIEWPROJ

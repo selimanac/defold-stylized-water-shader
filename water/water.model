@@ -2,7 +2,7 @@ mesh: "/water/assets/mesh/uniform_high_poly_plane.glb"
 name: "water"
 materials {
   name: "default"
-  material: "/water/material/stylized_water.material"
+  material: "/water/material/stylized_water/stylized_water.material"
   textures {
     sampler: "edge_foam_texture"
     texture: "/water/assets/textures/default_water_foam.png"
@@ -13,7 +13,7 @@ materials {
   }
   textures {
     sampler: "reflection_cubemap"
-    texture: "/example/components/sunset_skybox.cubemap"
+    texture: "/water/assets/day_skybox.cubemap"
   }
   textures {
     sampler: "sparkle_normal_map"

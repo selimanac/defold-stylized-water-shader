@@ -1,7 +1,7 @@
 name: "stylized_water"
 tags: "water"
-vertex_program: "/water/material/stylized_water.vp"
-fragment_program: "/water/material/stylized_water.fp"
+vertex_program: "/water/material/stylized_water/stylized_water.vp"
+fragment_program: "/water/material/stylized_water/stylized_water.fp"
 vertex_space: VERTEX_SPACE_LOCAL
 vertex_constants {
   name: "view_proj"

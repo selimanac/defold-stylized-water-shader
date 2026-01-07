@@ -1,0 +1,6 @@
+right: "/water/assets/skybox/day/px.png"
+left: "/water/assets/skybox/day/nx.png"
+top: "/water/assets/skybox/day/py.png"
+bottom: "/water/assets/skybox/day/ny.png"
+front: "/water/assets/skybox/day/pz.png"
+back: "/water/assets/skybox/day/nz.png"
