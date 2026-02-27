@@ -29,6 +29,13 @@ Open your `game.project` file, select  `Project` and add a  `Dependencies` field
 exclude_gles_sm100 = 1
 ```
 
+
+
+## Examples
+
+https://github.com/selimanac/defold-stylized-water-shader-examples
+
+
 ---
 
 ## Toss a Coin to Your Witcher
