@@ -92,7 +92,7 @@ local function internal_update_buffer(self)
 end
 
 local function internal_update_camera()
-	local camera_pos        = go.get_position(water_camera_instance)
+	local camera_pos        = go.get_world_position(water_camera_instance)
 	constants.camera_pos.x  = camera_pos.x
 	constants.camera_pos.y  = camera_pos.y
 	constants.camera_pos.z  = camera_pos.z
