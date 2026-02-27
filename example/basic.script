@@ -1,0 +1,18 @@
+local water = require("water.water")
+
+go.property("time_speed", 0.2)
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	msg.post("@render:", "clear_color", { color = vmath.vector4(0.1, 0.7, 1, 0) })
+
+	water.set_wave1(1.5, 0.5, 20, 3.5)
+	water.set_wave2(1.80, 0.8, 15, 1.8)
+
+	water.init(msg.url("/camera"), msg.url("/camera#camera"), msg.url("/sun"), msg.url("/water_surface"), self.time_speed)
+end
+
+function update(self, dt)
+	water.update_camera()
+	water.update(dt)
+end
