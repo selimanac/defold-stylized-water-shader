@@ -13,6 +13,7 @@ local sun_position           = vmath.vector3()
 local water_instance         = msg.url()
 local time                   = 0
 local time_speed             = 0
+local is_paused              = false
 
 local constants              = {
 	-- colors
@@ -203,10 +204,25 @@ function water.update_camera()
 	internal_update_camera()
 end
 
+--local M_TWO_PI = math.pi * 2
+
 function water.update(dt)
+	if is_paused then
+		return
+	end
+
 	time = time + dt * time_speed
+
+	-- TODO
+	-- constants.time.x = time % (2 * math.pi)
 	constants.time.x = time
+
+	-- constants.time_v.x = time % (2 * math.pi)
 	constants.time_v.x = time
+end
+
+function water.pause(state)
+	is_paused = state
 end
 
 -- ============================================================================

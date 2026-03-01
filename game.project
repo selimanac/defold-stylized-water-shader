@@ -31,6 +31,3 @@ app_manifest = /macos.appmanifest
 [shader]
 exclude_gles_sm100 = 1
 
-[graphics]
-texture_profiles = /default.texture_profiles
-
