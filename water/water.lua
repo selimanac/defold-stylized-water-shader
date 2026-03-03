@@ -221,6 +221,8 @@ function water.update(dt)
 	constants.time_v.x = time
 end
 
+--- Pause the timer
+-- @param state Pause state (true-false)
 function water.pause(state)
 	is_paused = state
 end
